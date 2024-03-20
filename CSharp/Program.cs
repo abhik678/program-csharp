@@ -252,129 +252,310 @@ public class Solution
     }
 
     #endregion
+
+    #region Reverse a string without using inbuilt method
+
+    public static string ReverseWithoutInbuiltString(string str)
+    {
+        // Output : KPMG TO WELCOME
+        int count = 0;
+        int wordstart = 0;
+        string[] words = new string[str.Length];
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (str[i] == ' ')
+            {
+                words[count++] = str.Substring(wordstart, i - wordstart);
+                wordstart = i + 1;
+            }
+        }
+        words[count++] = str.Substring(wordstart);
+
+        string reverse = "";
+
+        for (int i = count - 1; i >= 0; i--)
+        {
+            reverse += words[i] + ' ';
+        }
+
+
+        return reverse;
+    }
+
+    #endregion
+
+    public static void PrintOddPeramid(int n)
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= i * 2; j += 2)
+            {
+                Console.Write(j + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    public static void PrintEvenPeramid(int n)
+    {
+        for(int i = 1; i <= n; i++)
+        {
+            for( int j = 1; j <= i; j++)
+            {
+                Console.Write(2 * j + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    public static void PrintLeftStarPeramid(int n)
+    {
+        for( int i = 1; i <= n; i++ )
+        {
+            for( int j = 1; j <= i; j++ )
+            {
+                Console.Write("*" + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    public static void PrintRightStarPeramid(int n)
+    {
+        for( int i = 0; i <= n; i++ )
+        {
+            for( int j = 0; j <= n - i - 1; j++ )
+            {
+                Console.Write("  ");
+            }
+
+            for( int k = 0; k <= i; k++ )
+            {
+                Console.Write("* ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    public static void PrintStarParllel(int n)
+    {
+        for ( int i = 1; i <= n;i++ )
+        {
+            for (int  j = 1; j <= n; j++ )
+            {
+                Console.Write("*" + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    public static void PrintDownStar(int n)
+    {
+        for ( int i = 1; i <= n; ++i )
+        {
+            for ( int j = 1; j <= i; j++ )
+            {
+                Console.Write("  ");
+            }
+
+            for (int k = i; k <= n; k++ )
+            {
+                Console.Write("* ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+
+    public static void SwapNumberUsingThirdVariable(int a, int b)
+    {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+
+    public static void SwapNumberWithoutUsingThirdVariable(int x, int y)
+    {
+        x = x + y - x;
+        y = y + x - y;
+    }
+
+    public static void SwapNumberUsingThirdVariableInGenric<T>(ref T x, ref T y)
+    {
+        T temp = x;
+        x = y;
+        y = temp;
+    }
+
+
+
     public static void Main(string[] args)
     {
-        #region Reverse array of an Integer
-        int parseIntegerInput = Int32.Parse(Console.ReadLine()!);
-        int[] array = new int[parseIntegerInput];
-        for (int i = 0; i < parseIntegerInput; i++)
-        {
-            array[i] = Int32.Parse(Console.ReadLine()!);
-        }
-        var arrays = ReverseArray(array);
-        Console.WriteLine(String.Join(' ', arrays));
-        #endregion
+         #region Reverse array of an Integer
+         int parseIntegerInput = Int32.Parse(Console.ReadLine()!);
+         int[] array = new int[parseIntegerInput];
+         for (int i = 0; i < parseIntegerInput; i++)
+         {
+             array[i] = Int32.Parse(Console.ReadLine()!);
+         }
+         var arrays = ReverseArray(array);
+         Console.WriteLine(String.Join(' ', arrays));
+         #endregion
 
-        #region Reverse a String
+         #region Reverse a String
 
-        string stringReverseInput = Console.ReadLine()!;
-        string rev = ReverseString(stringReverseInput);
+         string stringReverseInput = Console.ReadLine()!;
+         string rev = ReverseString(stringReverseInput);
 
-        Console.WriteLine(rev);
+         Console.WriteLine(rev);
 
-        #endregion
+         #endregion
 
-        #region Combine two String Array into Single Array.
+         #region Combine two String Array into Single Array.
 
-        string firstStringArrayInput = Console.ReadLine()!;
-        string[] firstArray = new string[firstStringArrayInput.Length];
-        string secondStringArrayInput = Console.ReadLine()!;
-        string[] secondArray = new string[secondStringArrayInput.Length];
-        string[] finalArray = CombineTwoArray(firstArray!, secondArray!);
+         string firstStringArrayInput = Console.ReadLine()!;
+         string[] firstArray = new string[firstStringArrayInput.Length];
+         string secondStringArrayInput = Console.ReadLine()!;
+         string[] secondArray = new string[secondStringArrayInput.Length];
+         string[] finalArray = CombineTwoArray(firstArray!, secondArray!);
 
-        for (int i = 0; i < finalArray.Length; i++)
-        {
-            Console.WriteLine(finalArray[i] + " ");
-        }
+         for (int i = 0; i < finalArray.Length; i++)
+         {
+             Console.WriteLine(finalArray[i] + " ");
+         }
 
-        #endregion
+         #endregion
 
-        #region Reverse a Sentance of Strings.
+         #region Reverse a Sentance of Strings.
 
-        string stringWordInput = Console.ReadLine()!;
-        string[] reverseStringWordArray = ReverseStringWord(stringWordInput);
+         string stringWordInput = Console.ReadLine()!;
+         string[] reverseStringWordArray = ReverseStringWord(stringWordInput);
 
-        for (int i = 0; i <= reverseStringWordArray.Length - 1; i++)
-        {
-            Console.Write(reverseStringWordArray[i] + " ");
-        }
+         for (int i = 0; i <= reverseStringWordArray.Length - 1; i++)
+         {
+             Console.Write(reverseStringWordArray[i] + " ");
+         }
 
-        #endregion
+         #endregion
 
-        #region Find the fixed Charector from given String.
+         #region Find the fixed Charector from given String.
 
-        string stringWord = Console.ReadLine()!;
-        char fixedcharector = Char.Parse(Console.ReadLine()!);
-        int index = FindIndexOfCharector(stringWord, fixedcharector);
+         string stringWord = Console.ReadLine()!;
+         char fixedcharector = Char.Parse(Console.ReadLine()!);
+         int index = FindIndexOfCharector(stringWord, fixedcharector);
 
-        Console.WriteLine(index);
+         Console.WriteLine(index);
 
-        #endregion
+         #endregion
 
-        #region Is Number is Even Number
+         #region Is Number is Even Number
 
-        int findEvenNumber = Int32.Parse(Console.ReadLine()!);
-        string result = IsEven(findEvenNumber);
+         int findEvenNumber = Int32.Parse(Console.ReadLine()!);
+         string result = IsEven(findEvenNumber);
 
-        Console.WriteLine(result);
+         Console.WriteLine(result);
 
-        #endregion
+         #endregion
 
-        #region Is Number is Prime Number
+         #region Is Number is Prime Number
 
-        int findPrimeNumber = Int32.Parse(Console.ReadLine()!);
-        string response = IsPrime(findPrimeNumber);
-        Console.WriteLine(response);
+         int findPrimeNumber = Int32.Parse(Console.ReadLine()!);
+         string response = IsPrime(findPrimeNumber);
+         Console.WriteLine(response);
 
-        #endregion
+         #endregion
 
-        #region Is Number Armstrong Number
+         #region Is Number Armstrong Number
 
-        int findArmstrongNumber = Int32.Parse(Console.ReadLine()!);
-        string ArmstrongNumber = IsArmStrong(findArmstrongNumber);
-        Console.WriteLine(ArmstrongNumber);
+         int findArmstrongNumber = Int32.Parse(Console.ReadLine()!);
+         string ArmstrongNumber = IsArmStrong(findArmstrongNumber);
+         Console.WriteLine(ArmstrongNumber);
 
-        #endregion
+         #endregion
 
-        #region Is String is Pelindrom or Not
+         #region Is String is Pelindrom or Not
 
-        string pelindromeInputstring = Console.ReadLine()!;
-        string OutputPelindrome = IsPelindrome(pelindromeInputstring);
-        Console.WriteLine(OutputPelindrome);
+         string pelindromeInputstring = Console.ReadLine()!;
+         string OutputPelindrome = IsPelindrome(pelindromeInputstring);
+         Console.WriteLine(OutputPelindrome);
 
-        #endregion
+         #endregion
 
-        #region Find the Common Prefix from an String Array
+         #region Find the Common Prefix from an String Array
 
-        string commonInputString = Console.ReadLine()!;
-        string[] commonInputStringArray = commonInputString.Split(',');
+         string commonInputString = Console.ReadLine()!;
+         string[] commonInputStringArray = commonInputString.Split(',');
 
-        string commonOutputResult = CommonString(commonInputStringArray);
-        Console.WriteLine(commonOutputResult);
+         string commonOutputResult = CommonString(commonInputStringArray);
+         Console.WriteLine(commonOutputResult);
 
-        #endregion
+         #endregion
 
-        #region Find Duplicate Frequency in the given String
+         #region Find Duplicate Frequency in the given String
 
-        string duplicateInputString = Console.ReadLine()!;
-        char[] duplicateOutputArray = DuplicateFrequency(duplicateInputString);
+         string duplicateInputString = Console.ReadLine()!;
+         char[] duplicateOutputArray = DuplicateFrequency(duplicateInputString);
 
-        for (int i = 0; i <= duplicateOutputArray.Length - 1; i++)
-        {
-            Console.Write(duplicateOutputArray[i] + " ");
-        }
+         for (int i = 0; i <= duplicateOutputArray.Length - 1; i++)
+         {
+             Console.Write(duplicateOutputArray[i] + " ");
+         }
 
-        #endregion
+         #endregion
 
-        #region Find the Common item from the given two Integer Array
+         #region Find the Common item from the given two Integer Array
 
-        int[] lstUser = SecondMaxElement();
-        for (int i = 0; i < lstUser.Length; i++)
-        {
-            Console.WriteLine(lstUser[i]);
-        }
+         int[] lstUser = SecondMaxElement();
+         for (int i = 0; i < lstUser.Length; i++)
+         {
+             Console.WriteLine(lstUser[i]);
+         }
 
-        #endregion
+         #endregion
+
+         #region Reverse a string without using inbuilt method
+
+         string StringInput = Console.ReadLine()!;
+         string ReverseStringOutput = ReverseWithoutInbuiltString(StringInput);
+         Console.WriteLine(ReverseStringOutput);
+
+         #endregion
+
+        int Even = int.Parse(Console.ReadLine()!);
+        PrintEvenPeramid(Even);
+
+        int Odd = int.Parse(Console.ReadLine()!);
+        PrintOddPeramid(Odd);
+
+        int Left = int.Parse(Console.ReadLine()!);
+        PrintLeftStarPeramid(Left);
+
+        int Right = int.Parse(Console.ReadLine()!);
+        PrintRightStarPeramid(Right);
+
+        int Parllel = int.Parse(Console.ReadLine()!);
+        PrintStarParllel(Parllel);
+
+        int Down = int.Parse(Console.ReadLine()!);
+        PrintDownStar(Down);
+
+        int a = int.Parse(Console.ReadLine()!);
+        int b = int.Parse(Console.ReadLine()!);
+        Console.WriteLine(a + " " + b);
+        SwapNumberUsingThirdVariable(a, b);
+        Console.WriteLine(a + " " + b);
+
+        int x = int.Parse(Console.ReadLine()!);
+        int y = int.Parse(Console.ReadLine()!);
+        Console.WriteLine(x + " " + y);
+        SwapNumberWithoutUsingThirdVariable(x, y);
+        Console.WriteLine(x + " " + y);
+
+        int X = int.Parse(Console.ReadLine()!);
+        int Y = int.Parse(Console.ReadLine()!);
+        Console.WriteLine(X + " " + Y);
+        SwapNumberUsingThirdVariableInGenric(ref X, ref Y);
+        Console.WriteLine(X + " " + Y);
     }
 }
 
